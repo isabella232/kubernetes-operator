@@ -8,7 +8,7 @@ module.exports = {
   title: 'Aerospike Kubernetes Operator',
   tagline: 'Aerospike database operator for Kubernetes',
   url: 'https://aerospike.github.io/',
-  baseUrl: '/',
+  baseUrl: '/kubernetes-operator/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   trailingSlash: true,
