@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite_operator=self.webpackChunkwebsite_operator||[]).push([[3884],{8836:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/aerospike","name":"aerospike","count":1,"permalink":"/blog/tags/aerospike"}')}}]);

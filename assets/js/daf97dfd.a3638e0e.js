@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite_operator=self.webpackChunkwebsite_operator||[]).push([[4897],{5575:function(e){e.exports=JSON.parse('{"allTagsPath":"/kubernetes-operator/blog/tags","slug":"/kubernetes-operator/blog/tags/cloud","name":"cloud","count":1,"permalink":"/kubernetes-operator/blog/tags/cloud"}')}}]);

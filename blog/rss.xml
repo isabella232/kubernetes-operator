@@ -2,14 +2,14 @@
 <rss version="2.0">
     <channel>
         <title>Aerospike Kubernetes Operator Blog</title>
-        <link>https://aerospike.github.io/blog</link>
+        <link>https://aerospike.github.io/kubernetes-operator/blog</link>
         <description>Aerospike Kubernetes Operator Blog</description>
         <lastBuildDate>Mon, 30 Aug 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
             <title><![CDATA[Introducing Aerospike Kubernetes Operator]]></title>
-            <link>https://aerospike.github.io/blog/introducing-aerospike-kubernetes-operator</link>
+            <link>https://aerospike.github.io/kubernetes-operator/blog/introducing-aerospike-kubernetes-operator</link>
             <guid>introducing-aerospike-kubernetes-operator</guid>
             <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[https://aerospike.com/blog/introducing-the-aerospike-kubernetes-operator/]]></description>
