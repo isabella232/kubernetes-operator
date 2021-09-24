@@ -8,13 +8,13 @@ module.exports = {
   title: 'Aerospike Kubernetes Operator',
   tagline: 'Aerospike database operator for Kubernetes',
   url: 'https://aerospike.github.io/',
-  baseUrl: '/aerospike-kubernetes-operator/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   trailingSlash: true,
   favicon: 'img/favicon.ico',
-  organizationName: 'arrowplum', // Usually your GitHub org/user name.
-  projectName: 'aerospike-kubernetes-operator', // Usually your repo name.
+  organizationName: 'aerospike', // Usually your GitHub org/user name.
+  projectName: 'kubernetes-operator', // Usually your repo name.
   themeConfig: {
     colorMode: {
       defaultMode: 'light',
@@ -97,13 +97,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           // Please change this to your repo.
-          editUrl: 'https://github.com/aerospike/aerospike-kubernetes-operator/edit/main/website/',
+          editUrl: 'https://github.com/aerospike/kubernetes-operator/edit/main/',
         },
         blog: {
           showReadingTime: true,
           blogSidebarCount: 0,
           // Please change this to your repo.
-          editUrl: 'https://github.com/aerospike/aerospike-kubernetes-operator/edit/main/website/blog/',
+          editUrl: 'https://github.com/aerospike/kubernetes-operator/edit/main/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
