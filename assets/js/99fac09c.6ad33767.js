@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite_operator=self.webpackChunkwebsite_operator||[]).push([[4067],{6759:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/operator","name":"operator","count":1,"permalink":"/blog/tags/operator"}')}}]);
