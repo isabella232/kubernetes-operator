@@ -6,15 +6,15 @@ description: Aerospike Configuration Mapping
 
 ## Mapping Between YAML and Aerospike Configuration
 
-Kubernetes uses [YAML](https://YAML.org/) to express it's configuration whereas the Aerospike DB uses [it's own format for configuration](https://docs.aerospike.com/docs/configure/index.md) which it stores in `aerospike.conf`.
+Kubernetes uses [YAML](https://YAML.org/) to express its configuration whereas the Aerospike DB uses [it's own format for configuration](https://docs.aerospike.com/docs/configure/index.md) which it stores in `aerospike.conf`.
 
 The Aerospike Kubernetes Operator translates it's YAML configurations to the Aerospike server's own `aerospike.conf` format.
 
-Different Aerospike DB versions have may have different `aerospike.conf` representations. Please check [config-schemas](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/docs/config-schemas) for JSON schemas for all supported versions.
+Different Aerospike DB versions have may have different `aerospike.conf` representations. Please check [config-schemas](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/docs/config-schemas) for JSON schemas for all supported versions.
 
 ## Translation Conventions
 
-These are the rules we use to translate between Kubernetes' YAML and Aerospike's `aerospike.conf` format.
+These are the rules we used to translate between Kubernetes' YAML and Aerospike's `aerospike.conf` format.
 
 ### Simple Key and Values
 
@@ -42,6 +42,10 @@ YAML
 
 ```yaml
 memory-size: 4294967296 # 4G
+```
+Or
+
+```yaml
 memory-size: 419430400  # 400M
 ```
 
@@ -159,7 +163,7 @@ namespace bar {
 
 ### Typed Sections
 
-Typed sections have a fixed enum type associated with them in `aerospike.conf` file (eg `storage-engine`, `index-type`, etc.) and will be translated to maps with additional property `type` in YAML.
+Typed sections have a fixed enum type associated with them in `aerospike.conf` file (eg `storage-engine`, `index-type`, etc.) and will be translated to map with additional property `type` in YAML.
 The valid values for type will be the valid enum values for the section.
 
 For e.g. storage-engine type property can have values memory, device, pmem.

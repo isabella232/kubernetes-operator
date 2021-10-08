@@ -12,14 +12,14 @@ For this example assume that cluster is deployed using a file named `aerospike-c
 To upgrade the Aerospike cluster change the `spec.image` field in the aerocluster CR to the desired Aerospike enterprise server docker image.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
   namespace: aerospike
 spec:
   size: 2
-  image: aerospike/aerospike-server-enterprise:4.7.0.10
+  image: aerospike/aerospike-server-enterprise:4.9.0.33
   .
   .
 ```
@@ -67,7 +67,7 @@ Status:
         Tls Name:
       Host External IP:  34.70.193.192
       Host Internal IP:  10.128.15.225
-      Image:             aerospike/aerospike-server-enterprise:4.7.0.10
+      Image:             aerospike/aerospike-server-enterprise:4.9.0.33
       Initialized Volume Paths:
         /opt/aerospike
       Pod IP:        10.0.4.6

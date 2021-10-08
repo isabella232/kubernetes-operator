@@ -10,38 +10,85 @@ For more details, visit [configure cross-datacenter](https://docs.aerospike.com/
 ## Enable XDR and create a remote DC
 Following is the XDR specific config for the Aerospike cluster CR file.
 ```yaml
-  fileStorage:
-    - storageClass: ssd
-      volumeMounts:
-        - mountPath: /opt/aerospike/data
-          sizeInGB: 3
-        - mountPath: /opt/aerospike/xdr
-          sizeInGB: 5
-  aerospikeConfigSecret:
-    secretName: aerospike-secret
-    mountPath:  /etc/aerospike/secret
+storage:
+  filesystemVolumePolicy:
+    cascadeDelete: true
+    initMethod: deleteFiles
+  volumes:
+    - name: workdir
+      aerospike:
+        path: /opt/aerospike
+      source:
+        persistentVolume:
+          storageClass: ssd
+          volumeMode: Filesystem
+          size: 1Gi
+    - name: ns
+      aerospike:
+        path: /opt/aerospike/data
+      source:
+        persistentVolume:
+          storageClass: ssd
+          volumeMode: Filesystem
+          size: 3Gi
+    - name: xdr
+      aerospike:
+        path: /opt/aerospike/xdr
+      source:
+        persistentVolume:
+          storageClass: ssd
+          volumeMode: Filesystem
+          size: 3Gi
+    - name: aerospike-config-secret
+      source:
+        secret:
+          secretName: aerospike-secret
+      aerospike:
+        path: /etc/aerospike/secret
+        
   aerospikeConfig:
+    logging:
+      - name: /var/log/aerospike/aerospike.log
+        any: info
+
+    service:
+      feature-key-file: /etc/aerospike/secret/features.conf
+
+    security:
+      enable-security: true
+
+    network:
+      service:
+        port: 3000
+      fabric:
+        port: 3001
+      heartbeat:
+        port: 3002
+
     xdr:
-      enable-xdr: true
-      xdr-digestlog-path: /opt/aerospike/xdr/digestlog 5G
-      xdr-compression-threshold: 1000
-      datacenters:
-        - name: REMOTE_DC_1
-          dc-node-address-port: "IP PORT"
-          dc-security-config-file: /etc/aerospike/secret/security_credentials_DC1.txt
+      dcs:
+        - name: dc1
+          node-address-ports:
+            - aeroclusterdst-0-0 3000
+
+          auth-user: admin
+          auth-password-file: /etc/aerospike/secret/password_DC1.txt
+          namespaces:
+            - name: test
+
     namespaces:
       - name: test
-        enable-xdr: true
-        xdr-remote-datacenter: REMOTE_DC_1
         memory-size: 3000000000
+        replication-factor: 2
         storage-engine:
           type: device
           files:
             - /opt/aerospike/data/test.dat
           filesize: 2000000000
           data-in-memory: true
+
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/deploy/samples/xdr_src_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/xdr_src_cluster_cr.yaml).
 
 ## Remote DC Credentials
 If destination cluster is security enabled then `aerospike-secret` created in this section should also have `security_credentials_DC1.txt` file for destination DC.

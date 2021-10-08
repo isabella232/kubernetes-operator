@@ -18,6 +18,7 @@ The Operator supports the following capabilities:
  * Configure persistent storage and resource allocation
  * Standardize and validate configurations
  * Cluster security management
+ * Attach custom sidecars and init containers
 
 
 ## Architecture

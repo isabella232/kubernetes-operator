@@ -12,18 +12,38 @@ Following is the Storage specific config for aerospike cluster CR file.
 
 ```yaml
   storage:
+    filesystemVolumePolicy:
+      initMethod: deleteFiles
+      cascadeDelete: true
+    blockVolumePolicy:
+      cascadeDelete: true
     volumes:
-      - storageClass: ssd
-        path: /opt/aerospike
-        volumeMode: filesystem
-        sizeInGB: 1
-      - path: /test/dev/xvdf
-        storageClass: ssd
-        volumeMode: block
-        sizeInGB: 5
- .
- .
- .
+      - name: workdir
+        aerospike:
+          path: /opt/aerospike
+        source:
+          persistentVolume:
+            storageClass: ssd
+            volumeMode: Filesystem
+            size: 1Gi
+      - name: ns
+        aerospike:
+          path: /test/dev/xvdf
+        source:
+          persistentVolume:
+            storageClass: ssd
+            volumeMode: Block
+            size: 5Gi
+      - name: aerospike-config-secret
+        source:
+          secret:
+            secretName: aerospike-secret
+        aerospike:
+          path: /etc/aerospike/secret
+
+  .
+  .
+  .
   aerospikeConfig:
     service:
       feature-key-file: /etc/aerospike/secret/features.conf
@@ -38,7 +58,7 @@ Following is the Storage specific config for aerospike cluster CR file.
           devices:
             - /test/dev/xvdf
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/deploy/samples/ssd_storage_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/ssd_storage_cluster_cr.yaml).
 
 ## Deploy the cluster
 Follow the instructions [here](Create-Aerospike-cluster.md#deploy-aerospike-cluster) to deploy this configuration.

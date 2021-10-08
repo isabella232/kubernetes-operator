@@ -3,15 +3,14 @@ title: Create Aerospike Cluster
 description: Create Aerospike Cluster
 ---
 
-To deploy an Aerospike cluster using the Operator, you will create an Aerospike custom resource file that describes what you want the cluster to look like (e.g. number of nodes, types of services, system resources, etc), and then push that configuration file into Kubernetes.
+To deploy an Aerospike cluster using the Operator, you will create an Aerospike custom resource file that describes the cluster (e.g. number of nodes, Aerospike configuration, system resources, etc.), and then push that configuration file into Kubernetes.
 
 ## Prerequisites
 
 Before deploying your Aerospike cluster ensure that you have:
 
 - Reviewed the prerequisites and system requirements
-- Downloaded the Aerospike Kubernetes Operator
-- Installed the Operator on Kubernetes, and ensure that it is up and running
+- Deployed the Aerospike Kubernetes Operator successfully
 
 ## Prepare the Aerospike cluster configuration:
 
@@ -34,28 +33,28 @@ To apply a sample storage class based on your Kubernetes environment:
 
 For GKE
 ```sh
-$ kubectl apply -f deploy/samples/storage/gce_ssd_storage_class.yaml
+$ kubectl apply -f config/samples/storage/gce_ssd_storage_class.yaml
 ```
 
 For EKS
 ```sh
-$ kubectl apply -f deploy/samples/storage/eks_ssd_storage_class.yaml
+$ kubectl apply -f config/samples/storage/eks_ssd_storage_class.yaml
 ```
 
 For MicroK8s
 ```sh
-$ kubectl apply -f deploy/samples/storage/microk8s_filesystem_storage_class.yaml
+$ kubectl apply -f config/samples/storage/microk8s_filesystem_storage_class.yaml
 ```
 
 See [Storage Provisioning](Storage-provisioning.md) for more details on configuring persistent storage.
 
 ## Create secrets
-Create secrets to setup Aerospike authentication, TLS, and features.conf. See [Manage-TLS-Certificates](Manage-TLS-Certificates.md) for more details.
+Create secrets to set up Aerospike authentication, TLS, and `features.conf`. See [Manage-TLS-Certificates](Manage-TLS-Certificates.md) for more details.
 
-Aerospike secrets like TLS certificates, security credentials, and features.conf can be packaged in a single directory and converted to Kubernetes secrets like so
+Aerospike secrets like TLS certificates, security credentials, and `features.conf` can be packaged in a single directory and converted to Kubernetes secrets like so
 
 ```sh
-$ kubectl  -n aerospike create secret generic aerospike-secret --from-file=deploy/secrets
+$ kubectl  -n aerospike create secret generic aerospike-secret --from-file=config/samples/secrets
 ```
 
 Create a secret containing the password for Aerospike cluster admin user by passing the password from the command line.
@@ -65,7 +64,7 @@ $ kubectl  -n aerospike create secret generic auth-secret --from-literal=passwor
 
 ## Create Aerospike cluster Custom Resource (CR)
 
-Refer to the [cluster configuration settings](Cluster-configuration-settings.md) section for details on the Aerospike cluster custom resource (CR) file. Sample Aerospike cluster CR files for different configurations can be found [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.0/deploy/samples/).
+Refer to the [cluster configuration settings](Cluster-configuration-settings.md) section for details on the Aerospike cluster custom resource (CR) file. Sample Aerospike cluster CR files for different configurations can be found [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.0/config/samples/).
 
 This custom resource file can be edited later on to make any changes/manage the Aerospike cluster.
 
@@ -74,7 +73,7 @@ This custom resource file can be edited later on to make any changes/manage the 
 
 Use the CR yaml file that you created to deploy an Aerospike cluster.
 ```sh
-$ kubectl apply -f deploy/samples/dim_nostorage_cluster_cr.yaml
+$ kubectl apply -f config/samples/dim_nostorage_cluster_cr.yaml
 ```
 
 :::note

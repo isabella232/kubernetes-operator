@@ -12,7 +12,7 @@ To perform vertical scaling, the Aerospike Rack Awareness feature can be applied
 For this example, we assume that cluster is deployed with the name `aerospike-cluster.yaml`.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -20,7 +20,7 @@ metadata:
 
 spec:
   size: 2
-  image: aerospike/aerospike-server-enterprise:4.7.0.10
+  image: aerospike/aerospike-server-enterprise:4.9.0.33
 
   rackConfig:
     namespaces:
@@ -29,12 +29,33 @@ spec:
       - id: 1
         zone: us-central1-b
         storage:
+          filesystemVolumePolicy:
+            cascadeDelete: true
+            initMethod: deleteFiles
           volumes:
-            - path: /dev/sdf
-              storageClass: ssd
-              volumeMode: block
-              sizeInGB: 5
-
+            - name: workdir
+              aerospike:
+                path: /opt/aerospike
+              source:
+                persistentVolume:
+                  storageClass: ssd
+                  volumeMode: Filesystem
+                  size: 1Gi
+            - name: ns
+              aerospike:
+                path: /dev/sdf
+              source:
+                persistentVolume:
+                  storageClass: ssd
+                  volumeMode: Block
+                  size: 3Gi
+            - name: aerospike-config-secret
+              source:
+                secret:
+                  secretName: aerospike-secret
+              aerospike:
+                path: /etc/aerospike/secret
+        
   aerospikeConfig:
     service:
       feature-key-file: /etc/aerospike/secret/features.conf
@@ -62,7 +83,7 @@ The new rack can be created in same physical rack using existing `zone/region` (
 ## Update the `rackConfig` section
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -70,7 +91,7 @@ metadata:
 
 spec:
   size: 2
-  image: aerospike/aerospike-server-enterprise:4.7.0.10
+  image: aerospike/aerospike-server-enterprise:4.9.0.33
 
   rackConfig:
     namespaces:
@@ -80,11 +101,32 @@ spec:
       - id: 2
         zone: us-central1-b
         storage:
+          filesystemVolumePolicy:
+            cascadeDelete: true
+            initMethod: deleteFiles
           volumes:
-            - path: /dev/sdf
-              storageClass: ssd
-              volumeMode: block
-              sizeInGB: 8
+            - name: workdir
+              aerospike:
+                path: /opt/aerospike
+              source:
+                persistentVolume:
+                  storageClass: ssd
+                  volumeMode: Filesystem
+                  size: 1Gi
+            - name: ns
+              aerospike:
+                path: /dev/sdf
+              source:
+                persistentVolume:
+                  storageClass: ssd
+                  volumeMode: Block
+                  size: 8Gi
+            - name: aerospike-config-secret
+              source:
+                secret:
+                  secretName: aerospike-secret
+              aerospike:
+                path: /etc/aerospike/secret
 
   aerospikeConfig:
     service:

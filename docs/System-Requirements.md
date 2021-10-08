@@ -5,11 +5,12 @@ description: System Requirements
 
 ## What does it support?
 
-The Aerospike Operator deploys and manages Aerospike Database Enterprise Edition, versions 4.6.0 and later.  
+The Aerospike Operator deploys and manages Aerospike Database Enterprise Edition, versions 4.9.0 to 5.6.0.13.  
 
 The Operator is supported on the following platforms:
 
- * Kubernetes 1.16, 1.17, 1.18
+ * Kubernetes 1.16, 1.17, 1.18, 1.19, 1.20, 1.21 and 1.22
+ * Openshift 4.6, 4.7 and 4.8
  * Amazon Elastic Kubernetes Service 
  * Google Kubernetes Engine
  * Microsoft Azure Kubernetes Service

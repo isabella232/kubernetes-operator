@@ -10,7 +10,7 @@ The following restrictions are currently in place and apply to any cluster manag
 * aerospikeConfig.namespace cannot be nil or empty
 * ca-path in TLS config not allowed, Only ca-file is allowed
 * Strong consistency mode not yet supported
-* Warm restart not yet supported
+* Warm restart only supported for configuration change with newer versions of Aerospike container image 
 * All flash not yet supported
 
 ## When updating a cluster
@@ -29,20 +29,26 @@ Although they can't be updated in place, BlockStorage, FileStorage, MultiPodPerH
 * Persistent Aerospike namespace cannot be added dynamically
 * Namespace storage device cannot be resized. No new storage device can be added
 
+## Cannot be set
+
 These values cannot be given in aerospikeConfig in yaml config file. These are fixed or determined at runtime.
 
 * service.node-id
 * service.cluster-name
+* network.service.access-address
+* network.service.alternate-access-address
+* network.service.tls-access-address
+* network.service.tls-alternate-access-address
+* network.heartbeat.mode
+
+## Cannot be updated
+The following values cannot be changed after the first deployment of a cluster
 * network.service.port
 * network.service.access-port
 * network.service.alternate-access-port
-* network.service.alternate-access-address
 * network.service.tls-port
 * network.service.tls-access-port
-* network.service.tls-access-address
 * network.service.tls-alternate-access-port
-* network.service.tls-alternate-access-address
-* network.heartbeat.mode
 * network.heartbeat.port
 * network.heartbeat.tls-port
 * network.fabric.port

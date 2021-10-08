@@ -94,11 +94,17 @@ module.exports = {
       {
         docs: {
           sidebarCollapsed: false,
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve('./sidebars.json'),
           routeBasePath: '/',
           // Please change this to your repo.
           editUrl: 'https://github.com/aerospike/kubernetes-operator/edit/main/',
+          versions: {
+            current: {
+              label: "2.0.0-rc1 🚧"
+            }
+          }
         },
+
         blog: {
           showReadingTime: true,
           blogSidebarCount: 0,

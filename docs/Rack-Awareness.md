@@ -66,7 +66,7 @@ Rack specific config for the Aerospike cluster CR file.
           type: memory
 ```
 
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/deploy/samples/rack_enabled_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/rack_enabled_cluster_cr.yaml).
 
 ## Deploy the cluster
 
@@ -103,9 +103,9 @@ Add a new rack section in config yaml file under `rackConfig.racks` section and 
         zone: us-central1-c
 ```
 
-Operator redistribute cluster nodes across racks whenever cluster size is updated or number or racks is changed. If user adds a rack without increasing cluster size then old racks will be scaled down and new new rack will be scaled up based on new nodes redistribution.
+Operator redistribute cluster nodes across racks whenever cluster size is updated or number of racks is changed. If user adds a rack without increasing cluster size then old racks will be scaled down and new rack will be scaled up based on new node's redistribution.
 
-## Setting rack lavel storage and aerospikeConfig
+## Setting rack level storage and aerospikeConfig
 
 Rack also provide for setting local storage and aerospikeConfig. If local storage is given for rack then rack will use this storage otherwise common global storage will be used. Here aerospikeConfig is config patch which will be merged with common global aerospikeConfig and will be used for rack.
 
@@ -116,24 +116,38 @@ Rack also provide for setting local storage and aerospikeConfig. If local storag
     racks:
       - id: 1
         zone: us-central1-b
+        
         aerospikeConfig:
           service:
             proto-fd-max: 18000
+            
         storage:
           filesystemVolumePolicy:
+            cascadeDelete: true
             initMethod: deleteFiles
-            cascadeDelete: true
-          blockVolumePolicy:
-            cascadeDelete: true
           volumes:
-            - storageClass: ssd
-              path: /opt/aerospike
-              volumeMode: filesystem
-              sizeInGB: 1
-            - path: /opt/aerospike/data
-              storageClass: ssd
-              volumeMode: filesystem
-              sizeInGB: 3
+            - name: workdir
+              aerospike:
+                path: /opt/aerospike
+              source:
+                persistentVolume:
+                  storageClass: ssd
+                  volumeMode: Filesystem
+                  size: 1Gi
+            - name: ns
+              aerospike:
+                path: /opt/aerospike/data
+              source:
+                persistentVolume:
+                  storageClass: ssd
+                  volumeMode: Filesystem
+                  size: 3Gi
+            - name: aerospike-config-secret
+              source:
+                secret:
+                  secretName: aerospike-secret
+              aerospike:
+                path: /etc/aerospike/secret
 ```
 
 ## Merging AerospikeConfig
@@ -145,7 +159,7 @@ Local rack AerospikeConfig patch will be merged with common global base Aerospik
   - Element value type is changed
   - Element value is a primitive type and updated
   - Element value is primitive list type and updated
-  - Element key is `storage-engine` and its storage-engine type has been changed. (storage-engine can be of `device`, `file`, and `memory` type.
+  - Element key is `storage-engine` and its storage-engine type has been changed (storage-engine can be of `device`, `file`, and `memory` type).
 - If element is of map type then patch and base elements will be recursively merged
 - If elements are list of maps then new list elements in the patch list will be appended to the base list and corresponding entries will be merged using the same merge algorithm. Here the order of elements in the base list will be maintained. (corresponding entries are found by matching the special `name` key in maps. Here this list of maps is actually a map of map and main map keys are added in sub-map with key as `name` to convert map of maps to a list of maps).
 
@@ -228,4 +242,4 @@ This will try to scale down the desired rack to size 0. One node at a time will 
 
 ## Simultaneously add and remove rack
 
-If operator has to scale up some racks and scale down some other racks in single call then operator will always scale up first then it will scale down the racks. Hence for a short duration actual cluster size may be more than desired cluster size.
+If operator has to scale up some racks and scale down some other racks in single call then operator will always scale up first then it will scale down the racks. Hence, for a short duration actual cluster size may be more than desired cluster size.

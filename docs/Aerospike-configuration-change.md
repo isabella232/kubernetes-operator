@@ -10,14 +10,14 @@ For this example assume that cluster is deployed using a file named `aerospike-c
 Change the `spec.aerospikeConfig.service.proto-fd-max` field in the aerocluster CR to `20000`
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
   namespace: aerospike
 spec:
   size: 2
-  image: aerospike/aerospike-server-enterprise:4.7.0.10
+  image: aerospike/aerospike-server-enterprise:4.9.0.33
   aerospikeConfig:
     service:
       proto-fd-max: 15000
@@ -42,7 +42,7 @@ aerocluster-0-1     1/1     Running         0          3m6s
 aerocluster-0-2     1/1     Running         0          30s
 aerocluster-0-3     1/1     Terminating     0          30s
 ```
-After all the pods have restarted, use kubectl describe to get status of the cluster.
+After all the pods have restarted, use `kubectl describe` to get status of the cluster.
 
 Check `spec.aerospikeConfig.service.proto-fd-max` in status.
 

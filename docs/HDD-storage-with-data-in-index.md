@@ -10,20 +10,41 @@ For more details, visit [configuration of HDD Storage Engine with Data in Index 
 ## Create the namespace configuration
 Following is the storage-specific config for the Aerospike cluster CR file.
 ```yaml
-storage:
+  storage:
+    filesystemVolumePolicy:
+      cascadeDelete: true
+      initMethod: deleteFiles
     volumes:
-      - path: /opt/aerospike
-        storageClass: ssd
-        volumeMode: filesystem
-        sizeInGB: 1
-      - path: /opt/aerospike/data/test
-        storageClass: ssd
-        volumeMode: filesystem
-        sizeInGB: 3
-      - path: /opt/aerospike/data/bar
-        storageClass: ssd
-        volumeMode: filesystem
-        sizeInGB: 3
+      - name: workdir
+        aerospike:
+          path: /opt/aerospike
+        source:
+          persistentVolume:
+            storageClass: ssd
+            volumeMode: Filesystem
+            size: 1Gi
+      - name: nstest
+        aerospike:
+          path: /opt/aerospike/data/test
+        source:
+          persistentVolume:
+            storageClass: ssd
+            volumeMode: Filesystem
+            size: 3Gi
+      - name: nsbar
+        aerospike:
+          path: /opt/aerospike/data/bar
+        source:
+          persistentVolume:
+            storageClass: ssd
+            volumeMode: Filesystem
+            size: 3Gi
+      - name: aerospike-config-secret
+        source:
+          secret:
+            secretName: aerospike-secret
+        aerospike:
+          path: /etc/aerospike/secret
   .
   .
   .
@@ -56,7 +77,7 @@ storage:
           filesize: 2000000000
           data-in-memory: true
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/deploy/samples/hdd_dii_storage_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/hdd_dii_storage_cluster_cr.yaml).
 
 ## Deploy the cluster
 Follow the instructions [here](Create-Aerospike-cluster.md#deploy-aerospike-cluster) to deploy this configuration.

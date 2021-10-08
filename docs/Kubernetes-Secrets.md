@@ -3,14 +3,14 @@ title: Kubernetes Secrets
 description: Kubernetes Secrets
 ---
 
-Kubernetes secrets are used to store information securely. You can create secrets to setup Aerospike authentication, TLS, and features.conf. See [Manage-TLS-Certificates](Manage-TLS-Certificates.md) for more details.
+Kubernetes secrets are used to store information securely. You can create secrets to set up Aerospike authentication, TLS, and features.conf. See [Manage-TLS-Certificates](Manage-TLS-Certificates.md) for more details.
 
 ## Create a Kubernetes secret for a folder
 
-To create a Kubernetes secret for connectivity to the Aerospike cluster, the Aerospike features.conf can be packaged in a single directory and converted to Kubernetes secrets with the following command:
+To create a Kubernetes secret for connectivity to the Aerospike cluster, the Aerospike `features.conf` can be packaged in a single directory and converted to Kubernetes secrets with the following command:
 
 ```sh
-$ kubectl  -n aerospike create secret generic aerospike-secret --from-file=deploy/secrets
+$ kubectl  -n aerospike create secret generic aerospike-secret --from-file=config/samples/secrets
 ```
 
 To deploy through the Operator, update the name of the secret in the aerospikeConfigSecret spec of the custom resource that defines the Aerospike cluster. You can also refer to files that are in the folder when you are configuring parameters for the Aerospike cluster in the aerospikeConfig spec of the custom resource. 

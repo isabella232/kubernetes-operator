@@ -14,16 +14,6 @@ Here are a few examples for common access control tasks:
 For these examples, assume that cluster is deployed using a file named `aerospike-cluster.yaml`.
 :::
 
-- [Creating a role](Aerospike-access-control.md#creating-a-role)
-- [Adding privileges to a role](Aerospike-access-control.md#adding-privileges-to-a-role)
-- [Removing privileges from a role](Aerospike-access-control.md#removing-privileges-from-a-role)
-- [Creating a user with roles](Aerospike-access-control.md#creating-a-user-with-roles)
-- [Add roles to a user](Aerospike-access-control.md#add-new-roles-to-a-user)
-- [Removing roles from a user](Aerospike-access-control.md#removing-roles-from-a-user)
-- [Changing a user's password](Aerospike-access-control.md#changing-a-user-s-password)
-- [Dropping a role](Aerospike-access-control.md#dropping-a-role)
-- [Dropping a user](Aerospike-access-control.md#dropping-a-user)
-
 ## Creating a role
 
 Add a role in `roles` list under `aerospikeAccessControl`.
@@ -31,7 +21,7 @@ Add a role in `roles` list under `aerospikeAccessControl`.
 `sys-admin` and `user-admin` are standard predefined roles. Here we are adding a new custom role called "profiler" which is given `read` privileges.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -65,7 +55,7 @@ Add the `read` and `read-write` privileges to the `profiler` role in `roles` lis
 
 ```yaml
 
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -101,7 +91,7 @@ Remove privileges from the desired role in `roles` list under `aerospikeAccessCo
 Remove `read-write` `privilege`.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -142,7 +132,7 @@ kubectl  -n aerospike create secret generic profile-user-secret --from-literal=p
 Add `profileUser` user having `profiler` role.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -182,7 +172,7 @@ Add roles in the desired user's `roles` list.
 Add `user-admin`, `sys-admin` in `profileUser` roles list.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -224,7 +214,7 @@ Remove roles from the desired user's `roles` list.
 Remove `sys-admin` from the `profileUser's` roles list.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -269,7 +259,7 @@ kubectl  -n aerospike create secret generic new-profile-user-secret --from-liter
 Update the `secretName` for `profileUser` to the new secret name `new-profile-user-secret`.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -310,7 +300,7 @@ Remove the desired role from `roles` list under `aerospikeAccessControl`. Also r
 Remove `profiler` role.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster
@@ -346,7 +336,7 @@ Remove the desired user from the `users` list under `aerospikeAccessControl`.
 Remove `profileUser` user.
 
 ```yaml
-apiVersion: aerospike.com/v1alpha1
+apiVersion: asdb.aerospike.com/v1beta1
 kind: AerospikeCluster
 metadata:
   name: aerocluster

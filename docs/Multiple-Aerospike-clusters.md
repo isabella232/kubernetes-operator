@@ -3,123 +3,81 @@ title: Multiple Aerospike Clusters
 description: Multiple Aerospike Clusters
 ---
 
-The operator is able to deploy multiple Aerospike clusters within a single k8s namespace or in multiple k8s namespaces. The operator can watch all the namespaces specified in its yaml file and reconcile clusters deployed in them.
+The operator is able to deploy multiple Aerospike clusters within a single k8s namespace or in multiple k8s namespaces. 
 
 ## Multiple Aerospike clusters in a single k8s namespace
 
 Deploying multiple clusters in a single namespace is as easy as deploying a single cluster. The user has to just deploy another cluster with a cluster name (cluster object metadata name in cr.yaml file) that is not already registered in that namespace.
 
-## Multiple Aerospike clusters in multiple k8s namespaces
+## RBAC for other namespaces
+For deploying and managing Aerospike cluster's in the operator's namespace (recommended as aerospike) you need not do any additional RBAC configuration.
 
-Deploying multiple clusters in multiple namespaces require few steps to be followed
+For deploying cluster in namespaces other than the operator's namespace you need to
+- create a service account with name `aerospike-operator-controller-manager` in that namespace
+- add this service account to the operator's `ClusterRoleBinding`
 
-### Step 1
+#### Create the operator service account for the namespace
 
-Add a list of namespaces to be watched by Operator in `operator.yaml` file.
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: aerospike-kubernetes-operator
-  namespace: aerospike
-spec:
-    .
-    .
-    spec:
-      containers:
-        .
-        .
-        - name: aerospike-kubernetes-operator
-          env:
-          - name: WATCH_NAMESPACE
-            # Use below value for watching multiple namespaces by the operator
-            value: aerospike,aerospike1,aerospike2
+```shell
+# Replace ns1 with your target namespace
+kubectl -n ns1 create  serviceaccount aerospike-operator-controller-manager
 ```
 
-### Step 2
+#### Add service account to operator's ClusterRoleBinding
+Find the ClusterRoleBinding created for the operator and add the service account created above
 
-Add a new Service account and a new entry for this Service account in ClusterRoleBinding for every namespace to be watched in `rbac.yaml` file.
+```shell
+kubectl get clusterrolebindings.rbac.authorization.k8s.io  | grep aerospike-kubernetes-operator
+aerospike-kubernetes-operator.v2.0.0-rc1-74b946466d                 ClusterRole/aerospike-kubernetes-operator.v2.0.0-rc1-74b946466d   41m
+```
+
+In the example above the name of the cluster role binding is `aerospike-kubernetes-operator.v2.0.0-rc1-74b946466d`
+
+Edit the role binding and add a new subject entry for the service account
+
+```shell
+# Replace aerospike-kubernetes-operator.v2.0.0-rc1-74b946466d with the name of the cluster role binding found above
+kubectl edit clusterrolebindings.rbac.authorization.k8s.io  aerospike-kubernetes-operator.v2.0.0-rc1-74b946466d
+```
+
+In the editor that is launched append the following lines to the subjects section as shown below
 
 ```yaml
+  # A new entry for ns1.
+  # Replace ns1 with your namespace
+  - kind: ServiceAccount
+    name: aerospike-operator-controller-manager
+    namespace: ns1
+```
 
----
-# Service account used by the cluster pods to obtain pod metadata.
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  # Do not change the name, its hard-coded in the operator
-  name: aerospike-cluster
-  namespace: aerospike
+Save and ensure that the changes are applied.
 
-# Uncomment below service accounts for deploying clusters in additional namespaces
----
-# Service account used by the cluster pods to obtain pod metadata.
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  # Do not change name, its hard-coded in operator
-  name: aerospike-cluster
-  namespace: aerospike1
+Here is a full example of the operator's ClusterRoleBinding targeting `aerospike` and `ns1` namespaces.
 
----
-# Role
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: aerospike-cluster
-rules:
-- apiGroups:
-  - ""
-  resources:
-  - nodes
-  - services
-  verbs:
-  - get
-  - list
-- apiGroups:
-  - aerospike.com
-  resources:
-  - '*'
-  verbs:
-  - '*'
-
----
-# RoleBinding
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: aerospike-cluster
+  creationTimestamp: "2021-09-16T10:48:36Z"
+  labels:
+    olm.owner: aerospike-kubernetes-operator.v2.0.0-rc1
+    olm.owner.kind: ClusterServiceVersion
+    olm.owner.namespace: test
+    operators.coreos.com/aerospike-kubernetes-operator.test: ""
+  name: aerospike-kubernetes-operator.v2.0.0-rc1-74b946466d
+  resourceVersion: "51841234"
+  uid: be546dd5-b21e-4cc3-8a07-e2fe5fe5274c
 roleRef:
-  kind: ClusterRole
-  name: aerospike-cluster
   apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: aerospike-kubernetes-operator.v2.0.0-rc1-74b946466d
 subjects:
-- kind: ServiceAccount
-  name: aerospike-cluster
-  namespace: aerospike
-- kind: ServiceAccount
-  name: aerospike-cluster
-  namespace: aerospike1
+  - kind: ServiceAccount
+    name: aerospike-operator-controller-manager
+    namespace: aerospike
 
+  # New entry
+  - kind: ServiceAccount
+    name: aerospike-operator-controller-manager
+    namespace: ns1     
 ```
-
-### Step 3
-
-Now deploy a new cluster in any of the watched namespaces using a `cr.yaml` file.
-
-## XDR setup using Multicluster feature
-
-Deploy XDR destination cluster using this [cr.yaml](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/deploy/samples/xdr_dst_cluster_cr.yaml).
-
-```sh
-kubectl apply -f deploy/samples/xdr_dst_cluster_cr.yaml
-```
-
-Deploy XDR source cluster using this [cr.yaml](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/deploy/samples/xdr_src_cluster_cr.yaml).
-
-```sh
-kubectl apply -f deploy/samples/xdr_src_cluster_cr.yaml
-```
-
-Here Source and Destination clusters are deployed in a single namespace. If the user wants to deploy these clusters in different namespaces then the user has to follow [these](Multiple-Aerospike-clusters.md#multiple-aerospike-clusters-in-multiple-k8s-namespaces) steps.

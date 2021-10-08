@@ -16,23 +16,42 @@ Follow the instructions [here](Storage-provisioning.md#local-volume) to create a
 Storage specific config for aerospike cluster CR file.
 ```yaml
   storage:
+    filesystemVolumePolicy:
+      cascadeDelete: true
+      initMethod: deleteFiles
+    blockVolumePolicy:
+      cascadeDelete: true
     volumes:
-      - storageClass: ssd
-        path: /opt/aerospike
-        volumeMode: filesystem
-        sizeInGB: 1
-      - path: /opt/aerospike/data
-        storageClass: ssd
-        volumeMode: filesystem
-        sizeInGB: 3
-      - path: /dev/nvme0n1
-        storageClass: local-ssd
-        volumeMode: block
-        sizeInGB: 5
-      - path: /dev/sdf
-        storageClass: ssd
-        volumeMode: block
-        sizeInGB: 5
+      - name: workdir
+        aerospike:
+          path: /opt/aerospike
+        source:
+          persistentVolume:
+            storageClass: ssd
+            volumeMode: Filesystem
+            size: 1Gi
+      - name: nsvol1
+        aerospike:
+          path: /dev/nvme0n1
+        source:
+          persistentVolume:
+            storageClass: local-ssd
+            volumeMode: Block
+            size: 5Gi
+      - name: nsvol2
+        aerospike:
+          path: /dev/sdf
+        source:
+          persistentVolume:
+            storageClass: ssd
+            volumeMode: Block
+            size: 5Gi
+      - name: aerospike-config-secret
+        source:
+          secret:
+            secretName: aerospike-secret
+        aerospike:
+          path: /etc/aerospike/secret
   .
   .
   .
@@ -50,7 +69,7 @@ Storage specific config for aerospike cluster CR file.
           devices:
             - /dev/nvme0n1 /dev/sdf
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/1.0.1/deploy/samples/shadow_device_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/shadow_device_cluster_cr.yaml).
 
 ## Deploy the cluster
 Follow the instructions [here](Create-Aerospike-cluster.md#deploy-aerospike-cluster) to deploy this configuration.
