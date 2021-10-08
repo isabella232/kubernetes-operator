@@ -1,0 +1,148 @@
+{
+  "version-2.0.0-RC1/docsSidebar": [
+    {
+      "type": "doc",
+      "id": "version-2.0.0-RC1/Intro"
+    },
+    {
+      "type": "category",
+      "label": "Getting Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/System-Requirements"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Install-the-Operator-on-Kubernetes"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Create-Aerospike-cluster"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Connect-to-the-Aerospike-cluster"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Troubleshooting"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Limitations"
+        }
+      ],
+      "collapsible": true,
+      "collapsed": false
+    },
+    {
+      "type": "category",
+      "label": "Configuration",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Cluster-configuration-settings"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Aerospike-configuration-mapping"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Rack-Awareness"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Multiple-Aerospike-clusters"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Monitoring"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/XDR"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Aerospike-access-control"
+        }
+      ],
+      "collapsible": true,
+      "collapsed": false
+    },
+    {
+      "type": "category",
+      "label": "Management",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Aerospike-configuration-change"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Version-upgrade"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Scaling"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Kubernetes-Secrets"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Delete-Aerospike-cluster"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Manage-TLS-Certificates"
+        }
+      ],
+      "collapsible": true,
+      "collapsed": false
+    },
+    {
+      "type": "category",
+      "label": "Storage",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Storage-provisioning"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Scaling-namespace-storage"
+        }
+      ],
+      "collapsible": true,
+      "collapsed": false
+    },
+    {
+      "type": "category",
+      "label": "Storage examples",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Data-in-memory"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/Data-on-SSD"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/HDD-storage-with-data-in-index"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-RC1/HDD-storage-with-data-in-memory"
+        }
+      ],
+      "collapsible": true,
+      "collapsed": false
+    }
+  ]
+}
