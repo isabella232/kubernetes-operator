@@ -66,7 +66,7 @@ Rack specific config for the Aerospike cluster CR file.
           type: memory
 ```
 
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/rack_enabled_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/rack_enabled_cluster_cr.yaml).
 
 ## Deploy the cluster
 

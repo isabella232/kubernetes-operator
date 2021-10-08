@@ -5,7 +5,7 @@ description: Cluster Configuration Settings
 
 ## Custom Resource Definition and Custom Resource
 
-The Operator [CRD](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/deploy/crds/aerospike.com_aerospikeclusters_crd.yaml) specifies the CR that the operator uses. The Aerospike cluster Custom Resource (CR) based on this CRD drives the deployment and management of Aerospike clusters. To create and deploy an Aerospike cluster, create a CR yaml file.
+The Operator [CRD](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/deploy/crds/aerospike.com_aerospikeclusters_crd.yaml) specifies the CR that the operator uses. The Aerospike cluster Custom Resource (CR) based on this CRD drives the deployment and management of Aerospike clusters. To create and deploy an Aerospike cluster, create a CR yaml file.
 
 This custom resource can be edited later on to make any changes to the Aerospike cluster.
 
@@ -107,7 +107,7 @@ spec:
           type: memory
 ```
 
-Other sample Aerospike Cluster CR objects can be found [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/deploy/samples)
+Other sample Aerospike Cluster CR objects can be found [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/deploy/samples)
 
 ## Configuration
 

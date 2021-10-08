@@ -69,7 +69,7 @@ TLS specific config for the Aerospike cluster CR file.
           ca-file: /etc/aerospike/secret/cacert.pem
 
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/tls_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/tls_cluster_cr.yaml).
 
 ## Deploy the cluster
 Follow the instructions [here](Create-Aerospike-cluster.md#deploy-aerospike-cluster) to deploy this configuration.

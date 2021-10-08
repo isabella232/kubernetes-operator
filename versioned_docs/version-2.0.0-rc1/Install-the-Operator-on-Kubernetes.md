@@ -65,7 +65,7 @@ The operator can be installed targeting
 Run the operator bundle
 
 ```shell
-operator-sdk run bundle docker.io/aerospike/aerospike-kubernetes-operator-bundle:2.0.0-RC1 --namespace=aerospike
+operator-sdk run bundle docker.io/aerospike/aerospike-kubernetes-operator-bundle:2.0.0-rc1 --namespace=aerospike
 ```
 
 #### Install the operator targeting multiple namespaces
@@ -74,7 +74,7 @@ Assuming you want the operator to target two other namespaces ns1 and ns2, insta
 install mode like so
 
 ```shell
-operator-sdk run bundle docker.io/aerospike/aerospike-kubernetes-operator-bundle:2.0.0-RC1 --namespace=aerospike --install-mode MultiNamespace=ns1,ns2
+operator-sdk run bundle docker.io/aerospike/aerospike-kubernetes-operator-bundle:2.0.0-rc1 --namespace=aerospike --install-mode MultiNamespace=ns1,ns2
 ```
 
 #### Install the operator targeting all namespaces
@@ -83,7 +83,7 @@ Assuming you want the operator to target all namespaces, deploy the operator wit
 install mode like so
 
 ```shell
-operator-sdk run bundle docker.io/aerospike/aerospike-kubernetes-operator-bundle:2.0.0-RC1 --namespace=aerospike --install-mode AllNamespaces
+operator-sdk run bundle docker.io/aerospike/aerospike-kubernetes-operator-bundle:2.0.0-rc1 --namespace=aerospike --install-mode AllNamespaces
 ```
 
 ### RBAC for other namespaces
@@ -96,7 +96,7 @@ Verify that the operator's CSV is in the `Succeeded` phase.
 $ kubectl get csv -n aerospike
 
 NAME                                   DISPLAY                         VERSION       REPLACES   PHASE
-aerospike-kubernetes-operator.v2.0.0-RC1   Aerospike Kubernetes operator   2.0.0-RC1-RC1                    Succeeded
+aerospike-kubernetes-operator.v2.0.0-rc1   Aerospike Kubernetes operator   2.0.0-rc1-RC1                    Succeeded
 ```
 
 Verify that the operator's pod is running.

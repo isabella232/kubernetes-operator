@@ -46,7 +46,7 @@ $ sudo ln -s /dev/nvme0n2 /mnt/disks/
 ```
 
 :::note
-You can use also your own discovery directory, but make sure that the [provisioner](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/storage/aerospike_local_volume_provisioner.yaml) is also configured to point to the same directory.
+You can use also your own discovery directory, but make sure that the [provisioner](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/storage/aerospike_local_volume_provisioner.yaml) is also configured to point to the same directory.
 :::
 
 ### Configure and deploy local volume provisioner
@@ -55,9 +55,9 @@ To automate the local volume provisioning, we will create and run a provisioner 
 
 The provisioner will run as a `DaemonSet` which will manage the local SSDs on each node based on a discovery directory, create/delete the PersistentVolumes and clean up the storage when it is released.
 
-The local volume static provisioner for this example is defined in [aerospike_local_volume_provisioner.yaml](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/storage/aerospike_local_volume_provisioner.yaml).
+The local volume static provisioner for this example is defined in [aerospike_local_volume_provisioner.yaml](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/storage/aerospike_local_volume_provisioner.yaml).
 
-The storage class yaml is defined in [local_storage_class.yaml](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/storage/local_storage_class.yaml).
+The storage class yaml is defined in [local_storage_class.yaml](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/storage/local_storage_class.yaml).
 
 Create local storage class and then deploy the provisioner.
 

@@ -88,7 +88,7 @@ storage:
           data-in-memory: true
 
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/xdr_src_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/xdr_src_cluster_cr.yaml).
 
 ## Remote DC Credentials
 If destination cluster is security enabled then `aerospike-secret` created in this section should also have `security_credentials_DC1.txt` file for destination DC.

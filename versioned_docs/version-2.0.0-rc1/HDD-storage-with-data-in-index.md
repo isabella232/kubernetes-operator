@@ -77,7 +77,7 @@ Following is the storage-specific config for the Aerospike cluster CR file.
           filesize: 2000000000
           data-in-memory: true
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/hdd_dii_storage_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/hdd_dii_storage_cluster_cr.yaml).
 
 ## Deploy the cluster
 Follow the instructions [here](Create-Aerospike-cluster.md#deploy-aerospike-cluster) to deploy this configuration.

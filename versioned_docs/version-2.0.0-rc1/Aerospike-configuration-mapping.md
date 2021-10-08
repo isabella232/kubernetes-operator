@@ -10,7 +10,7 @@ Kubernetes uses [YAML](https://YAML.org/) to express its configuration whereas t
 
 The Aerospike Kubernetes Operator translates it's YAML configurations to the Aerospike server's own `aerospike.conf` format.
 
-Different Aerospike DB versions have may have different `aerospike.conf` representations. Please check [config-schemas](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/docs/config-schemas) for JSON schemas for all supported versions.
+Different Aerospike DB versions have may have different `aerospike.conf` representations. Please check [config-schemas](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/docs/config-schemas) for JSON schemas for all supported versions.
 
 ## Translation Conventions
 

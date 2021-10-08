@@ -1,8 +1,8 @@
 {
-  "version-2.0.0-RC1/docsSidebar": [
+  "version-2.0.0-rc1/docsSidebar": [
     {
       "type": "doc",
-      "id": "version-2.0.0-RC1/Intro"
+      "id": "version-2.0.0-rc1/Intro"
     },
     {
       "type": "category",
@@ -10,27 +10,27 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/System-Requirements"
+          "id": "version-2.0.0-rc1/System-Requirements"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Install-the-Operator-on-Kubernetes"
+          "id": "version-2.0.0-rc1/Install-the-Operator-on-Kubernetes"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Create-Aerospike-cluster"
+          "id": "version-2.0.0-rc1/Create-Aerospike-cluster"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Connect-to-the-Aerospike-cluster"
+          "id": "version-2.0.0-rc1/Connect-to-the-Aerospike-cluster"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Troubleshooting"
+          "id": "version-2.0.0-rc1/Troubleshooting"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Limitations"
+          "id": "version-2.0.0-rc1/Limitations"
         }
       ],
       "collapsible": true,
@@ -42,31 +42,31 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Cluster-configuration-settings"
+          "id": "version-2.0.0-rc1/Cluster-configuration-settings"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Aerospike-configuration-mapping"
+          "id": "version-2.0.0-rc1/Aerospike-configuration-mapping"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Rack-Awareness"
+          "id": "version-2.0.0-rc1/Rack-Awareness"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Multiple-Aerospike-clusters"
+          "id": "version-2.0.0-rc1/Multiple-Aerospike-clusters"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Monitoring"
+          "id": "version-2.0.0-rc1/Monitoring"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/XDR"
+          "id": "version-2.0.0-rc1/XDR"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Aerospike-access-control"
+          "id": "version-2.0.0-rc1/Aerospike-access-control"
         }
       ],
       "collapsible": true,
@@ -78,27 +78,27 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Aerospike-configuration-change"
+          "id": "version-2.0.0-rc1/Aerospike-configuration-change"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Version-upgrade"
+          "id": "version-2.0.0-rc1/Version-upgrade"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Scaling"
+          "id": "version-2.0.0-rc1/Scaling"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Kubernetes-Secrets"
+          "id": "version-2.0.0-rc1/Kubernetes-Secrets"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Delete-Aerospike-cluster"
+          "id": "version-2.0.0-rc1/Delete-Aerospike-cluster"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Manage-TLS-Certificates"
+          "id": "version-2.0.0-rc1/Manage-TLS-Certificates"
         }
       ],
       "collapsible": true,
@@ -110,11 +110,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Storage-provisioning"
+          "id": "version-2.0.0-rc1/Storage-provisioning"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Scaling-namespace-storage"
+          "id": "version-2.0.0-rc1/Scaling-namespace-storage"
         }
       ],
       "collapsible": true,
@@ -126,19 +126,19 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Data-in-memory"
+          "id": "version-2.0.0-rc1/Data-in-memory"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/Data-on-SSD"
+          "id": "version-2.0.0-rc1/Data-on-SSD"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/HDD-storage-with-data-in-index"
+          "id": "version-2.0.0-rc1/HDD-storage-with-data-in-index"
         },
         {
           "type": "doc",
-          "id": "version-2.0.0-RC1/HDD-storage-with-data-in-memory"
+          "id": "version-2.0.0-rc1/HDD-storage-with-data-in-memory"
         }
       ],
       "collapsible": true,

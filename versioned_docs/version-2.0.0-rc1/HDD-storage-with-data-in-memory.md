@@ -1,22 +1,19 @@
 ---
-title: Data On SSD
-description: Data On SSD
+title: HDD Storage With Data In Memory
+description: HDD Storage With Data In Memory
 ---
 
-Here we provide namespace storage configuration for storing namespace data on a provisioned SSD storage device.
+Here we provide namespace storage configuration for storing namespace data both in memory and on the persistent device as well.
 
-For more details, visit [configuration of SSD Storage Engine](https://docs.aerospike.com/docs/configure/namespace/storage/#recipe-for-an-ssd-storage-engine).
+For more details, visit [HDD Storage Engine with Data in Memory](https://docs.aerospike.com/docs/configure/namespace/storage/#recipe-for-an-hdd-storage-engine-with-data-in-memory)
 
 ## Create the namespace configuration
-Following is the Storage specific config for aerospike cluster CR file.
-
+Following is the storage-specific config for the Aerospike cluster CR file.
 ```yaml
   storage:
     filesystemVolumePolicy:
+      cascadeDelete: false
       initMethod: deleteFiles
-      cascadeDelete: true
-    blockVolumePolicy:
-      cascadeDelete: true
     volumes:
       - name: workdir
         aerospike:
@@ -28,19 +25,18 @@ Following is the Storage specific config for aerospike cluster CR file.
             size: 1Gi
       - name: ns
         aerospike:
-          path: /test/dev/xvdf
+          path: /opt/aerospike/data
         source:
           persistentVolume:
             storageClass: ssd
-            volumeMode: Block
-            size: 5Gi
+            volumeMode: Filesystem
+            size: 3Gi
       - name: aerospike-config-secret
         source:
           secret:
             secretName: aerospike-secret
         aerospike:
           path: /etc/aerospike/secret
-
   .
   .
   .
@@ -49,16 +45,18 @@ Following is the Storage specific config for aerospike cluster CR file.
       feature-key-file: /etc/aerospike/secret/features.conf
     security:
       enable-security: true
-    namespaces:
+    namespace:
       - name: test
         memory-size: 3000000000
         replication-factor: 2
         storage-engine:
           type: device
-          devices:
-            - /test/dev/xvdf
+          file:
+            - /opt/aerospike/data/test.dat
+          filesize: 2000000000
+          data-in-memory: true
 ```
-Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-RC1/config/samples/ssd_storage_cluster_cr.yaml).
+Get full CR file [here](https://github.com/aerospike/aerospike-kubernetes-operator/tree/2.0.0-rc1/config/samples/hdd_dim_storage_cluster_cr.yaml).
 
 ## Deploy the cluster
 Follow the instructions [here](Create-Aerospike-cluster.md#deploy-aerospike-cluster) to deploy this configuration.
