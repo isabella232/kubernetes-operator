@@ -22,6 +22,14 @@
           },
           {
             "type": "doc",
+            "id": "Create-Aerospike-Cluster-on-OpenShift"
+          },
+          {
+            "type": "doc",
+            "id": "Create-OpenShift-Private-Cluster-GCP"
+          },
+          {
+            "type": "doc",
             "id": "Connect-to-the-Aerospike-cluster"
           },
           {
@@ -146,4 +154,3 @@
       }
     ]
   }
-  

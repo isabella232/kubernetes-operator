@@ -1,9 +1,9 @@
 ---
-title: Install the Operator On OpenShift on GCP
-description: Install The Operator On OpenShift on GCP
+title: Create OpenShift Private Cluster on GCP
+description: Learn how to create an OpenShift (OKD) private cluster on GCP
 ---
 
-Learn the steps to set up an OpenShift (OKD) private cluster on GCP.
+In order to deploy the Aerospike Kubernetes Operator on OpenShift, you will first need to create an OpenShift cluster. As an example, the following steps walk you through the process of setting up a private OpenShift (OKD) cluster on GCP.
 
 ## Prerequisites
 
