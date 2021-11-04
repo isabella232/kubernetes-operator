@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Aerospike Kubernetes Operator Blog</title>
         <link>https://aerospike.github.io/kubernetes-operator/blog</link>
@@ -13,6 +13,7 @@
             <guid>introducing-aerospike-kubernetes-operator</guid>
             <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[https://aerospike.com/blog/introducing-the-aerospike-kubernetes-operator/]]></description>
+            <content:encoded><![CDATA[<p><a href="https://aerospike.com/blog/introducing-the-aerospike-kubernetes-operator/">https://aerospike.com/blog/introducing-the-aerospike-kubernetes-operator/</a></p>]]></content:encoded>
         </item>
     </channel>
 </rss>
