@@ -7,7 +7,7 @@ Kubernetes Secrets let you store sensitive data with less risk of exposing this 
 
 ## Create a Secret for a Folder
 
-To create a Kubernetes Secret for connectivity to the Aerospike cluster, you can use the following command to package the Aerospike `features.conf` in a folder and convert it to a Secret:
+To create a Kubernetes Secret for connectivity to the Aerospike cluster, use the following command to package the Aerospike `features.conf` in a folder and convert it to a Secret:
 
 ```shell
 kubectl  -n aerospike create secret generic aerospike-secret --from-file=config/samples/secrets
