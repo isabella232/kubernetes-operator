@@ -30,7 +30,7 @@ Use kubectl to apply the change.
 kubectl apply -f aerospike-cluster.yaml
 ```
 
-The pods will undergo a rolling restart. Use kubectl to watch the progress.
+The pods undergo a rolling restart. Use kubectl to watch the progress.
 
 ```sh
 $ kubectl get pods -n aerospike
