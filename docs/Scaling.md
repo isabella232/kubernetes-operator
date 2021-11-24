@@ -5,8 +5,7 @@ description: Scaling
 
 For this example assume that cluster is deployed using a file named `aerospike-cluster.yaml`.
 
-## Change the size
-Change the `spec.size` field in the yaml file to scale up/down the cluster.
+Change the `spec.size` field in the yaml file to scale the cluster up or down to the specified number of pods.
 
 ```yaml
 apiVersion: asdb.aerospike.com/v1beta1
@@ -21,12 +20,13 @@ spec:
   .
 ```
 
-## Apply the change
+Use kubectl to apply the change.
+
 ```sh
-$ kubectl apply -f aerospike-cluster.yaml
+kubectl apply -f aerospike-cluster.yaml
 ```
 
-## Check the pods
+Check the pods.
 
 ```sh
 $ kubectl get pods -n aerospike
