@@ -126,6 +126,10 @@
         "items": [
           {
             "type": "doc",
+            "id": "all-flash"
+          },
+          {
+            "type": "doc",
             "id": "Data-in-memory"
           },
           {
