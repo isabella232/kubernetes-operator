@@ -3,9 +3,14 @@ title: Aerospike Access Control
 description: Aerospike Access Control
 ---
 
-Aerospike Access Control includes user, role, and privilege creation and maintenance. [See the documentation for more information on Aerospike Access Control](https://docs.aerospike.com/docs/guide/security/access-control.html).
+Aerospike Access Control includes user, role, and privilege creation and maintenance. [See the documentation for more information on Aerospike Access Control](https://docs.aerospike.com/docs/operations/configure/security/access-control/).
 
 To manage your access controls from the operator, configure the `aerospikeAccessControl` section in the Aerospike cluster's Custom Resource (CR) file.
+
+:::warning
+Access control changes on an operator managed Aerospike cluster made externally, e.g. using AQL or Asadm, will be reverted by the operator.
+:::
+
 
 Here are a few examples for common access control tasks:
 
