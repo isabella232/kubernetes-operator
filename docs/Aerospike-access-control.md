@@ -8,7 +8,7 @@ Aerospike Access Control includes user, role, and privilege creation and mainten
 To manage your access controls from the operator, configure the `aerospikeAccessControl` section in the Aerospike cluster's Custom Resource (CR) file.
 
 :::warning
-Access control changes on an operator managed Aerospike cluster made externally, e.g. using AQL or Asadm, will be reverted by the operator.
+Access control changes on an operator-managed Aerospike cluster will be reverted if made externally (e.g. using `aql` or `asadm`).
 :::
 
 
