@@ -3,7 +3,7 @@ title: Monitoring
 description: Monitoring
 ---
 
-[Aerospike Monitoring Stack](https://docs.aerospike.com/docs/tools/monitorstack/index.md) can be used to enable monitoring and alerting for Aerospike clusters deployed by the Aerospike Kubernetes Operator.
+[Aerospike Monitoring Stack](https://docs.aerospike.com/docs/tools/monitorstack/index.html) can be used to enable monitoring and alerting for Aerospike clusters deployed by the Aerospike Kubernetes Operator.
 
 ## Add Aerospike Prometheus Exporter Sidecar
 
@@ -58,7 +58,7 @@ scrape_configs:
       action: keep
 ```
 
-See [Aerospike Monitoring Stack](https://docs.aerospike.com/docstools/monitorstack/index.md) for its installation, configuration and setup guide.
+See [Aerospike Monitoring Stack](https://docs.aerospike.com/docs/tools/monitorstack/index.html) for its installation, configuration and setup guide.
 
 ## Quick Example
 
