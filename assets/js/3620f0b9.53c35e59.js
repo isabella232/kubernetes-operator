@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite_operator=self.webpackChunkwebsite_operator||[]).push([[9231],{8506:function(e){e.exports=JSON.parse('{"allTagsPath":"/kubernetes-operator/blog/tags","slug":"/kubernetes-operator/blog/tags/k-8-s","name":"k8s","count":1,"permalink":"/kubernetes-operator/blog/tags/k-8-s"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite_operator=self.webpackChunkwebsite_operator||[]).push([[1200],{3517:function(e){e.exports=JSON.parse('{"permalink":"/kubernetes-operator/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"previousPage":null,"nextPage":null,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
