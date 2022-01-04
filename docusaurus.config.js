@@ -19,7 +19,7 @@ module.exports = {
     algolia: {
         apiKey: '2ae4ef750e4c4ccde17b619476db242e',
         indexName: 'kubernetes-operator',
-        contextualSearch: true,
+        contextualSearch: false,
     },
     colorMode: {
       defaultMode: 'light',
