@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite_operator=self.webpackChunkwebsite_operator||[]).push([[9075],{4046:function(e){e.exports=JSON.parse('{"allTagsPath":"/kubernetes-operator/blog/tags","slug":"/kubernetes-operator/blog/tags/aerospike","name":"aerospike","count":2,"permalink":"/kubernetes-operator/blog/tags/aerospike"}')}}]);
