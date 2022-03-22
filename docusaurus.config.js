@@ -39,7 +39,6 @@ module.exports = {
         //   label: 'Docs',
         // },
         { to: '/blog', label: 'Blog', position: 'left' },
-        { type: 'docsVersionDropdown', position: 'right'},
         {
           href: 'https://github.com/aerospike/aerospike-kubernetes-operator',
           label: 'GitHub',
@@ -103,12 +102,6 @@ module.exports = {
           routeBasePath: '/',
           // Please change this to your repo.
           editUrl: 'https://github.com/aerospike/kubernetes-operator/edit/main/',
-          lastVersion: 'current',
-          versions: {
-            current: {
-              label: "2.0.0"
-            }
-          }
         },
 
         blog: {
